@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import { useContext } from 'react';
 import propTypes from 'prop-types';
 import '../year.css';
@@ -24,20 +25,27 @@ const styles = {
 
     input: {
         marginRight: '20px',
+    },
+
+    strong: {
+        marginRight: '20px',
     }
 }
 
 function TodoItem({ todo, index, onChange }) {
     const { removeTodo } = useContext(TodosContext);
-    let classes = [];
-    if(todo.completed) {
-        classes.push('done');
-    }
+    // let classes = [];
+    // if(todo.completed) {
+    //     classes.push('done');
+    // }
+    let spanClassname = cn({
+        'done': todo.completed,
+    })
     return (
         <li style={styles.li}>
-            <span className={classes.join(' ')}>
+            <span className={spanClassname}>
                 <input checked={todo.completed} style={styles.input} type='checkbox' onChange={() => onChange(todo.id)}/>
-                <strong>{index}</strong>
+                <strong style={styles.strong}>{index}</strong>
                 {todo.title}
             </span>
             <button style={styles.button} onClick={removeTodo.bind(null, todo.id)}>&#215;</button>

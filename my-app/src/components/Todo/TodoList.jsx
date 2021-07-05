@@ -7,7 +7,8 @@ const styles = {
     ul: {
         listStyle: 'none',
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
         margin: '15px 0',
         padding: '0',
     }
